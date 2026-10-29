@@ -39,6 +39,11 @@ nav a:hover{color:var(--clay);border-color:var(--clay)}
 .stats{display:flex;justify-content:center;gap:48px;margin-top:56px;font-family:"Segoe UI",Arial,sans-serif;flex-wrap:wrap}
 .stats div{text-align:center}.stats strong{display:block;font:700 2rem Georgia,serif;color:var(--green)}.stats span{font-size:.85rem;color:var(--muted)}
 
+/* ===== Изображения секций ===== */
+.sec-img{display:block;width:100%;max-height:340px;object-fit:cover;border-radius:10px;border:1px solid var(--line);box-shadow:0 10px 22px rgba(29,43,36,.12)}
+.about-grid .sec-img,.contact-grid .sec-img{margin-top:22px}
+.games .sec-img{margin-bottom:28px}
+
 /* ===== О клубе ===== */
 .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
 .about-grid p{margin-bottom:14px}
@@ -165,6 +170,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
     <h2>Вечера без экранов</h2>
     <p>В 2019 году мы с друзьями-студентами поняли, что хороших мест для живой игры в центре города почти нет. Взяли небольшой зал, принесли свои коробки с играми и позвали всех знакомых.</p>
     <p>Сегодня «Ход конём» – это тёплое пространство, где новичок за час осваивает правила, а опытные игроки находят достойных соперников.</p>
+    <img class="sec-img" src="images/images3.jpeg" alt="Атмосфера клуба «Ход конём»">
    </div>
    <ul class="perks">
     <li><strong>Объясняем с нуля</strong><span>Ведущий за столом поможет разобраться в любой игре.</span></li>
@@ -179,6 +185,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
    <p class="eyebrow">Каталог</p>
    <h2>Шесть игр, с которых стоит начать</h2>
    <p class="sub">Самые популярные у наших гостей: от быстрых партий до вечерних стратегий.</p>
+   <img class="sec-img" src="images/images4.jpg" alt="Игровой стол в клубе «Ход конём»">
    <div class="game-grid">
     <article class="game"><span class="n">01</span><span class="genre">Семейная</span><h3>Каркассон</h3><p>Выкладываем тайлы и строим средневековый город.</p><div class="meta">2–5 игроков · 40 минут</div></article>
     <article class="game"><span class="n">02</span><span class="genre">Кооператив</span><h3>Пандемия</h3><p>Команда спасает мир от эпидемий.</p><div class="meta">2–4 игрока · 60 минут</div></article>
@@ -228,6 +235,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
      <dt>Telegram</dt><dd>@hod_konem_spb</dd>
     </dl>
     <p class="note">Адрес и телефон вымышленные, сайт создан в учебных целях.</p>
+    <img class="sec-img" src="images/images5.jpeg" alt="Клуб настольных игр «Ход конём»">
    </div>
    <form id="f">
     <label for="nm">Имя</label><input id="nm" required>
