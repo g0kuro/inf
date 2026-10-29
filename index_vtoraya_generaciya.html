@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ход конём — клуб настольных игр, Санкт-Петербург</title>
+<style>
+/* ===== Переменные и сброс ===== */
+:root{--bg:#f4f1e8;--ink:#1d2b24;--green:#2f5d46;--green-d:#234636;--clay:#c8643b;--clay-d:#a94e2a;--line:#d9d3c0;--card:#fffdf7;--muted:#5d6b63}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.eyebrow{font:700 .78rem/1 "Segoe UI",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:12px}
+h2{font-size:2.2rem;line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);max-width:560px;margin-bottom:38px}
+.btn{display:inline-block;font:700 1rem "Segoe UI",Arial,sans-serif;padding:14px 28px;border-radius:6px;text-decoration:none;background:var(--clay);color:#fff;border:2px solid var(--clay);cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s}
+.btn:hover{background:var(--clay-d);border-color:var(--clay-d);transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.18)}
+.btn.line{background:transparent;color:var(--green);border-color:var(--green)}
+.btn.line:hover{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ===== Шапка ===== */
+header{position:sticky;top:0;z-index:20;background:rgba(244,241,232,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;font-size:1.35rem;color:var(--green);text-decoration:none}
+.brand b{color:var(--clay)}
+nav ul{display:flex;gap:26px;list-style:none;font-family:"Segoe UI",Arial,sans-serif}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+nav a:hover{color:var(--clay);border-color:var(--clay)}
+.menu-btn{display:none;background:none;border:1.5px solid var(--green);color:var(--green);border-radius:6px;padding:8px 14px;font:600 .9rem "Segoe UI",Arial,sans-serif;cursor:pointer}
+
+/* ===== Hero ===== */
+.hero{padding:96px 0 84px;border-top:0;text-align:center;background:radial-gradient(circle at 15% 20%,#e4ecdd 0,transparent 45%),radial-gradient(circle at 90% 80%,#f2dccd 0,transparent 40%)}
+.hero h1{font-size:4rem;line-height:1.05;max-width:800px;margin:0 auto 22px;color:var(--green-d)}
+.hero h1 i{color:var(--clay)}
+.hero p{max-width:600px;margin:0 auto 32px;font-size:1.15rem;color:var(--muted)}
+.hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.stats{display:flex;justify-content:center;gap:48px;margin-top:56px;font-family:"Segoe UI",Arial,sans-serif;flex-wrap:wrap}
+.stats div{text-align:center}.stats strong{display:block;font:700 2rem Georgia,serif;color:var(--green)}.stats span{font-size:.85rem;color:var(--muted)}
+
+/* ===== О клубе ===== */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+.about-grid p{margin-bottom:14px}
+.perks{list-style:none;display:grid;gap:16px}
+.perks li{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:8px;padding:18px 20px;transition:transform .2s,box-shadow .2s}
+.perks li:hover{transform:translateX(6px);box-shadow:0 8px 18px rgba(29,43,36,.1)}
+.perks strong{display:block;color:var(--green-d);font-size:1.05rem}
+.perks span{color:var(--muted);font-size:.95rem}
+
+/* ===== Игры ===== */
+.games{background:#ebe7d8}
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;position:relative;transition:transform .25s,box-shadow .25s,border-color .25s}
+.game:hover{transform:translateY(-6px);box-shadow:0 14px 26px rgba(29,43,36,.14);border-color:var(--clay)}
+.game .n{position:absolute;top:14px;right:18px;font:700 2.4rem Georgia,serif;color:#e6dfc9}
+.game .genre{font:700 .72rem "Segoe UI",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+.game h3{font-size:1.3rem;margin:6px 0 8px;color:var(--green-d)}
+.game p{font-size:.95rem;color:var(--muted);margin-bottom:12px}
+.game .meta{font:600 .85rem "Segoe UI",Arial,sans-serif;color:var(--ink);border-top:1px dashed var(--line);padding-top:10px}
+
+/* ===== Тарифы ===== */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.plan{padding:34px 28px;border-right:1px solid var(--line);transition:background .25s}
+.plan:last-child{border-right:0}
+.plan:hover{background:#f7f2e4}
+.plan.best{background:var(--green);color:#fff}
+.plan.best:hover{background:var(--green-d)}
+.plan h3{font-size:1.2rem}
+.plan .price{font:700 2.6rem Georgia,serif;margin:8px 0 14px}
+.plan ul{list-style:none;font-family:"Segoe UI",Arial,sans-serif;font-size:.93rem}
+.plan li{padding:5px 0 5px 22px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--clay);font-weight:700}
+.plan.best li::before{color:#ffd9c6}
+
+/* ===== Отзывы ===== */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+blockquote{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;transition:transform .25s}
+blockquote:hover{transform:translateY(-4px)}
+blockquote p{margin-bottom:16px;font-style:italic}
+blockquote footer{display:flex;align-items:center;gap:12px;font:600 .9rem "Segoe UI",Arial,sans-serif;background:none;border:0;padding:0;position:static}
+.ava{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:700}
+
+/* ===== Контакты ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:14px 22px;font-family:"Segoe UI",Arial,sans-serif}
+dt{font-weight:700;color:var(--green-d)}
+dd{color:var(--ink)}
+.note{margin-top:20px;font-size:.82rem;color:var(--muted);font-family:"Segoe UI",Arial,sans-serif}
+form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px;font-family:"Segoe UI",Arial,sans-serif}
+label{display:block;font-size:.85rem;font-weight:600;margin-bottom:5px}
+input,select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:6px;margin-bottom:16px;font:inherit;background:#fff}
+input:focus,select:focus{outline:none;border-color:var(--green)}
+.ok{display:none;margin-top:14px;padding:12px;border-radius:6px;background:#e3efe6;color:var(--green-d);font-weight:600}
+
+footer.site{background:var(--green-d);color:#cfe0d5;padding:30px 0;font:.9rem "Segoe UI",Arial,sans-serif}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ===== Адаптив ===== */
+@media(max-width:900px){
+ .about-grid,.contact-grid{grid-template-columns:1fr}
+ .game-grid{grid-template-columns:repeat(2,1fr)}
+ .plans,.rev-grid{grid-template-columns:1fr}
+ .plan{border-right:0;border-bottom:1px solid var(--line)}
+ .plan:last-child{border-bottom:0}
+ .hero h1{font-size:2.9rem}
+}
+@media(max-width:700px){
+ .menu-btn{display:block}
+ nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 20px 14px}
+ nav.open{display:block}
+ nav ul{flex-direction:column;gap:0}
+ nav a{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+ .game-grid{grid-template-columns:1fr}
+ .hero{padding:64px 0}
+ .hero h1{font-size:2.3rem}
+ h2{font-size:1.8rem}
+ section{padding:56px 0}
+ .stats{gap:26px}
+ dl{grid-template-columns:1fr;gap:2px 0}
+ dd{margin-bottom:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap bar">
+  <a class="brand" href="#top">Ход <b>конём</b></a>
+  <button class="menu-btn" id="mb" aria-expanded="false" aria-controls="nv">Меню</button>
+  <nav id="nv" aria-label="Основное меню">
+   <ul>
+    <li><a href="#about">О клубе</a></li>
+    <li><a href="#games">Игры</a></li>
+    <li><a href="#prices">Цены</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<main id="top">
+ <section class="hero">
+  <div class="wrap">
+   <p class="eyebrow">Клуб настольных игр · Санкт-Петербург</p>
+   <h1>Один стол, шесть игр и <i>новые друзья</i></h1>
+   <p>Приходите после пар или работы: ведущие объяснят правила, а коллекция из 200+ игр найдёт занятие на любой вкус.</p>
+   <div class="cta">
+    <a class="btn" href="#contacts">Записаться на вечер</a>
+    <a class="btn line" href="#games">Выбрать игру</a>
+   </div>
+   <div class="stats">
+    <div><strong>200+</strong><span>игр в коллекции</span></div>
+    <div><strong>2019</strong><span>год основания</span></div>
+    <div><strong>7 дней</strong><span>в неделю</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="about">
+  <div class="wrap about-grid">
+   <div>
+    <p class="eyebrow">О клубе</p>
+    <h2>Вечера без экранов</h2>
+    <p>В 2019 году мы с друзьями-студентами поняли, что хороших мест для живой игры в центре города почти нет. Взяли небольшой зал, принесли свои коробки с играми и позвали всех знакомых.</p>
+    <p>Сегодня «Ход конём» – это тёплое пространство, где новичок за час осваивает правила, а опытные игроки находят достойных соперников.</p>
+   </div>
+   <ul class="perks">
+    <li><strong>Объясняем с нуля</strong><span>Ведущий за столом поможет разобраться в любой игре.</span></li>
+    <li><strong>Для компании и в одиночку</strong><span>Собираем игровые столы из тех, кто пришёл без пары.</span></li>
+    <li><strong>Чай и снеки включены</strong><span>Уютный зал, мягкий свет и бесплатные напитки.</span></li>
+   </ul>
+  </div>
+ </section>
+
+ <section class="games" id="games">
+  <div class="wrap">
+   <p class="eyebrow">Каталог</p>
+   <h2>Шесть игр, с которых стоит начать</h2>
+   <p class="sub">Самые популярные у наших гостей: от быстрых партий до вечерних стратегий.</p>
+   <div class="game-grid">
+    <article class="game"><span class="n">01</span><span class="genre">Семейная</span><h3>Каркассон</h3><p>Выкладываем тайлы и строим средневековый город.</p><div class="meta">2–5 игроков · 40 минут</div></article>
+    <article class="game"><span class="n">02</span><span class="genre">Кооператив</span><h3>Пандемия</h3><p>Команда спасает мир от эпидемий.</p><div class="meta">2–4 игрока · 60 минут</div></article>
+    <article class="game"><span class="n">03</span><span class="genre">Party</span><h3>Кодовые имена</h3><p>Две команды ищут своих агентов по подсказкам.</p><div class="meta">4–8 игроков · 20 минут</div></article>
+    <article class="game"><span class="n">04</span><span class="genre">Стратегия</span><h3>Колонизаторы</h3><p>Торговля, дороги и города на острове Катан.</p><div class="meta">3–4 игрока · 75 минут</div></article>
+    <article class="game"><span class="n">05</span><span class="genre">Ассоциации</span><h3>Диксит</h3><p>Угадываем картинку, которую загадал рассказчик.</p><div class="meta">3–6 игроков · 30 минут</div></article>
+    <article class="game"><span class="n">06</span><span class="genre">Карточная</span><h3>Свинтус</h3><p>Быстрая весёлая игра для любой компании.</p><div class="meta">2–10 игроков · 15 минут</div></article>
+   </div>
+  </div>
+ </section>
+
+ <section id="prices">
+  <div class="wrap">
+   <p class="eyebrow">Тарифы</p>
+   <h2>Платите за время, а не за игры</h2>
+   <p class="sub">Любая игра из коллекции, ведущий и напитки уже входят в стоимость.</p>
+   <div class="plans">
+    <div class="plan"><h3>Вечер</h3><div class="price">300 ₽</div><ul><li>Любые игры</li><li>Ведущий за столом</li><li>Чай и вода</li></ul></div>
+    <div class="plan best"><h3>Студенческий</h3><div class="price">200 ₽</div><ul><li>По студенческому билету</li><li>Будни до 22:00</li><li>Всё включено</li></ul></div>
+    <div class="plan"><h3>Абонемент</h3><div class="price">1 800 ₽</div><ul><li>8 посещений</li><li>Приоритет в записи</li><li>Скидка на турниры</li></ul></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="reviews">
+  <div class="wrap">
+   <p class="eyebrow">Отзывы</p>
+   <h2>Что говорят гости</h2>
+   <p class="sub">Отзывы вымышленные и приведены для учебного макета.</p>
+   <div class="rev-grid">
+    <blockquote><p>«Пришла одна, а ушла с новой компанией и билетом на следующий четверг.»</p><footer><span class="ava">А</span>Анастасия, студентка</footer></blockquote>
+    <blockquote><p>«Правила объяснили так просто, что за пять минут уже играли в «Колонизаторов».»</p><footer><span class="ava">М</span>Михаил, разработчик</footer></blockquote>
+    <blockquote><p>«Лучший способ отдохнуть после пар: уютно, недорого и никаких телефонов.»</p><footer><span class="ava">Д</span>Дарья, магистрантка</footer></blockquote>
+   </div>
+  </div>
+ </section>
+
+ <section id="contacts">
+  <div class="wrap contact-grid">
+   <div>
+    <p class="eyebrow">Контакты</p>
+    <h2>Приходите в гости</h2>
+    <dl>
+     <dt>Адрес</dt><dd>Санкт-Петербург, ул. Большая Морская, 31</dd>
+     <dt>Часы работы</dt><dd>пн–чт 16:00–23:00<br>пт–вс 14:00–01:00</dd>
+     <dt>Телефон</dt><dd>+7 (812) 000-00-00</dd>
+     <dt>Telegram</dt><dd>@hod_konem_spb</dd>
+    </dl>
+    <p class="note">Адрес и телефон вымышленные, сайт создан в учебных целях.</p>
+   </div>
+   <form id="f">
+    <label for="nm">Имя</label><input id="nm" required>
+    <label for="ph">Телефон</label><input id="ph" type="tel" required>
+    <label for="gm">Любимый жанр</label>
+    <select id="gm"><option>Любой</option><option>Семейные</option><option>Кооперативные</option><option>Party</option><option>Стратегии</option></select>
+    <button class="btn" type="submit">Записаться</button>
+    <div class="ok" id="ok" role="status">Спасибо! Мы подтвердим запись в течение часа.</div>
+   </form>
+  </div>
+ </section>
+</main>
+
+<footer class="site"><div class="wrap"><span>© 2026 «Ход конём»</span><span>Учебный проект</span></div></footer>
+
+<script>
+const mb=document.getElementById('mb'),nv=document.getElementById('nv');
+mb.addEventListener('click',()=>{const o=nv.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+nv.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nv.classList.remove('open');mb.setAttribute('aria-expanded','false')}));
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').style.display='block';e.target.reset()});
+</script>
+</body>
+</html>
